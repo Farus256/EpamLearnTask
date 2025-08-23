@@ -21,8 +21,14 @@ public class MainPage : BasePage
     private readonly By _searchInput = By.Id("new_form_search");
     private readonly By _searchFindButton = By.XPath("//span[@class='bth-text-layer']/parent::button");
     private readonly By _searchResultLinks = By.XPath("//div[@class='search-results__items']//a[@class='search-results__title-link']");
+    
+    //Task3
     private readonly By _aboutButton = By.LinkText("About");
     private readonly By _downloadButton = By.XPath("//a[@class='button-ui-23 btn-focusable' and @download]");
+    //Task4
+    private readonly By _insightsButton = By.LinkText("Insights");
+    private readonly By _carouselNextButton = By.XPath("//div[contains(@class,'media-content')]//button[contains(@class, 'slider__right-arrow')]");
+    private readonly By _readMoreActiveCarouselLink = By.XPath("//div[@aria-hidden='false']//a[contains(@class,'link-with-bottom-arrow')]");
 
     public void ClickOnCareersLink() => Click(_careersLink);
 
@@ -45,6 +51,12 @@ public class MainPage : BasePage
     public void ClickAboutButton() => Click(_aboutButton);
     
     public void ClickDownloadButton() => Click(_downloadButton);
+    
+    public void ClickReadMoreActiveCarouselLink() => Click(_readMoreActiveCarouselLink);
+    
+    public void ClickInsightsButton() => Click(_insightsButton);
+    
+    public void ClickCarouselNextButton() => Click(_carouselNextButton);
 
     public ReadOnlyCollection<IWebElement> GetSearchResultLinks()
     {
@@ -64,5 +76,20 @@ public class MainPage : BasePage
     public void ClickViewAndApplyButton()
     {
         Click(By.XPath("//ul[contains(@class,'search-result__list')]/li[last()]//a[text()='View and apply']"));
+    }
+
+    public string SelectTextFromCarousel()
+    {
+        var element = WaitForElement(
+            By.XPath("//div[contains(@class,'owl-item') and contains(@class,'active')]//span[contains(@class,'museo-sans-light')]"), 
+            BaseTest.LongWait);
+        
+        var text = element.Text;
+        return text;
+    }
+
+    public IWebElement FindArticleByText(string text)
+    {
+        return WaitForElement(By.XPath($"//span[@class ='museo-sans-light' and contains(normalize-space(.),'{text}')]"));
     }
 }

@@ -34,6 +34,7 @@ public class ThirdTaskTest : BaseTest
         {
             File.Delete(expectedFile);
         }
+        
+        Log.Information("Finished Validating downloaded file");
     }
-    
 }
