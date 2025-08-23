@@ -11,7 +11,7 @@ public class FourthTaskTest : BaseTest
     [DataRow("firefox")]
     public void ValidateCarouselArticleName_ShouldBeSameArticle(string browser)
     {
-        Log.Information("Starting carousel article name");
+        Log.Information("Starting carousel article name on {Browser}", browser);
         
         _driver = WebDriverFactory.CreateDriver(GetBrowserType(browser));
         _driver.Navigate().GoToUrl(BaseUrl);
@@ -26,5 +26,7 @@ public class FourthTaskTest : BaseTest
         mainPage.ClickReadMoreActiveCarouselLink();
         
         mainPage.FindArticleByText(text).Should().NotBeNull();
+        
+        Log.Information("Finished carousel article name on {Browser}", browser);
     }
 }

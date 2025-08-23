@@ -12,7 +12,7 @@ public class ThirdTaskTest : BaseTest
     [DataRow("firefox")]
     public void ValidateDownloadedFile_ShouldVerifyDownloadedFile(string browser)
     {
-        Log.Information("Start Validating downloaded file");
+        Log.Information("Start Validating downloaded file on {Browser}", browser);
         
         var downloadDir = Path.Combine(Directory.GetCurrentDirectory(), "Downloads");
         var expectedFile = Path.Combine(downloadDir, "EPAM_Corporate_Overview_Q4FY-2024.pdf");
@@ -35,6 +35,6 @@ public class ThirdTaskTest : BaseTest
             File.Delete(expectedFile);
         }
         
-        Log.Information("Finished Validating downloaded file");
+        Log.Information("Finished Validating downloaded file on {Browser}", browser);
     }
 }
