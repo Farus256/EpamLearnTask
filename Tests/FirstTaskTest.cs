@@ -15,7 +15,6 @@ public class FirstTaskTest : BaseTest
         Log.Information("Starting {Keyword} vacancy search on {Browser}", keyword,browser);
 
         _driver = WebDriverFactory.CreateDriver(GetBrowserType(browser));
-        _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
         _driver.Navigate().GoToUrl(BaseUrl);
 
         var mainPage = new MainPage(_driver);

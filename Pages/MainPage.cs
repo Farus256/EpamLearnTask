@@ -21,6 +21,8 @@ public class MainPage : BasePage
     private readonly By _searchInput = By.Id("new_form_search");
     private readonly By _searchFindButton = By.XPath("//span[@class='bth-text-layer']/parent::button");
     private readonly By _searchResultLinks = By.XPath("//div[@class='search-results__items']//a[@class='search-results__title-link']");
+    private readonly By _aboutButton = By.LinkText("About");
+    private readonly By _downloadButton = By.XPath("//a[@class='button-ui-23 btn-focusable' and @download]");
 
     public void ClickOnCareersLink() => Click(_careersLink);
 
@@ -39,6 +41,10 @@ public class MainPage : BasePage
     public void EnterSearchTerm(string term) => Type(_searchInput, term);
 
     public void ClickSearchFindButton() => Click(_searchFindButton);
+    
+    public void ClickAboutButton() => Click(_aboutButton);
+    
+    public void ClickDownloadButton() => Click(_downloadButton);
 
     public ReadOnlyCollection<IWebElement> GetSearchResultLinks()
     {
